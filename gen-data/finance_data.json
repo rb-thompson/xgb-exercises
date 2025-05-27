@@ -1,0 +1,12 @@
+[
+  { "stock": "AAPL", "price": 426.8643675293, "volume": 937953 },
+  { "stock": "GOOGL", "price": 1327.4860167033, "volume": 361229 },
+  { "stock": "AMZN", "price": 1384.0744212472, "volume": 365818 },
+  { "stock": "GOOGL", "price": 487.0622754686, "volume": 435831 },
+  { "stock": "AMZN", "price": 1166.8562146053, "volume": 268353 },
+  { "stock": "AAPL", "price": 653.8406136345, "volume": 244495 },
+  { "stock": "AMZN", "price": 1289.0244491262, "volume": 76729 },
+  { "stock": "GOOGL", "price": 430.7636571452, "volume": 860647 },
+  { "stock": "GOOGL", "price": 526.7755472095, "volume": 238398 },
+  { "stock": "AAPL", "price": 1194.6113670277, "volume": 158875 }
+]
