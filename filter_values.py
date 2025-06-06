@@ -69,3 +69,10 @@ iter_imp = IterativeImputer(
 )
 df_reg[['age', 'salary', 'score']] = iter_imp.fit_transform(df_reg[['age', 'salary', 'score']])
 print("Sample after regression imputation:\n", df_reg.head())
+
+
+# Multivariate Imputation by Chained Equations (MICE)
+df_mice = df.copy()
+mice_imp = IterativeImputer(max_iter=10, random_state=42)
+df_mice[['age', 'salary', 'score']] = mice_imp.fit_transform(df_mice[['age', 'salary', 'score']])
+print("Sample after MICE imputation:\n", df_mice.head())
