@@ -15,4 +15,16 @@
 
 > The MICE process works by first filling missing values with initial estimates, often simple ones like mean or median values. It then iteratively refines these estimates by modeling each feature with regression techniques, conditional on the others. This approach allows MICE to accurately preserve multivariate relationships and provide uncertainty estimates for the imputed values.
 
-> However, MICE requires careful tuning. It involves deciding on the number of iterations to run and handling the computational complexity that arises from modeling each feature iteratively. -Bojan Tunguz
+> However, MICE requires careful tuning. It involves deciding on the number of iterations to run and handling the computational complexity that arises from modeling each feature iteratively. -Bojan Tunguz  
+
+
+**Article Link**: (June 2025)  
+[(Dealing With Missing Values, Part 3.)](https://www.xgblog.ai/p/dealing-with-missing-values-part-21b)
+
+**Topic**:  
+Three more ways of dealing with missing values.  
+> Probabilistic & Statistical Approaches (Bayesian/EM-style) explicity model missingness under a rigorous framework.  
+
+> Interpolation (Time-Series & Ordered Data) fill in missing data by estimating values based on surrounding known data points.  
+
+> Robust Model Design (Tree-Based & Native Missing-Value Handling) inherently manages missing values during training, eliminating the need for a separate imputation step and often resulting in excellent predictive performance.

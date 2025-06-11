@@ -101,3 +101,39 @@ for dept, med in dept_medians.items():
     ] = med
 
 print("Sample after domain-specific imputation:\n", df_domain.head())
+
+
+# Bayesian/EM-style Imputation
+from sklearn.linear_model import BayesianRidge
+
+df_bayes = df.copy()
+em_imp = IterativeImputer(estimator=BayesianRidge(), max_iter=10, random_state=0)
+df_bayes[['age', 'salary', 'score']] = em_imp.fit_transform(df_bayes[['age', 'salary', 'score']])
+print("Sample after Bayesian/EM-style imputation:\n", df_bayes.head())
+
+# Interpolation Techniques
+
+# Simulate a time index
+df_time = df.copy()
+df_time.index = pd.date_range(start='2025-01-01', periods=len(df_time), freq='D')
+
+# Linear interpolation
+df_interp = df_time.interpolate(method='linear')
+print("Sample after linear interpolation:\n", df_interp.head())
+
+# Tree-based Techniques
+from sklearn.ensemble import HistGradientBoostingClassifier
+from sklearn.model_selection import train_test_split
+
+# Prepare a simple classification target
+df_model = df_simple.copy()
+
+X = df_model[['age', 'salary', 'score']]
+y = (df_model['score'] > 0.5).astype(int)  # Binary target based on score
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+
+clf = HistGradientBoostingClassifier(random_state=0)
+clf.fit(X_train, y_train)
+
+print("Test accuracy:", clf.score(X_test, y_test))
