@@ -76,3 +76,28 @@ df_mice = df.copy()
 mice_imp = IterativeImputer(max_iter=10, random_state=42)
 df_mice[['age', 'salary', 'score']] = mice_imp.fit_transform(df_mice[['age', 'salary', 'score']])
 print("Sample after MICE imputation:\n", df_mice.head())
+
+# Indicator Variable Techniques
+df_flag = df.copy()
+# For each column, add a flag
+for col in ['age', 'salary', 'score', 'dept']:
+    df_flag[f'{col}_missing'] = df_flag[col].isnull().astype(int)
+
+# Then impute using mean for numerical cols
+imp = SimpleImputer(strategy='mean')
+df_flag[['age', 'salary', 'score']] = imp.fit_transform(df_flag[['age', 'salary', 'score']])
+df_flag[['dept']] = SimpleImputer(strategy='most_frequent').fit_transform(df_flag[['dept']])
+print("Sample after adding flags and imputing:\n", df_flag.head())
+
+# Domain-Specific Rules
+df_domain = df.copy()
+
+# Example rule: fill missing salary by dept-level median
+dept_medians = df_domain.groupby('dept')['salary'].median()
+for dept, med in dept_medians.items():
+    df_domain.loc[
+        (df_domain['salary'].isnull()) & (df_domain['dept'] == dept),
+        'salary'
+    ] = med
+
+print("Sample after domain-specific imputation:\n", df_domain.head())
